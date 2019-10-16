@@ -8,6 +8,13 @@ const playerService = () => {
         return allPlayers;
     }
 
+    const getPlayerById = (id) => {
+        const player = Player.findById(id, function (error) {
+            if (error) error(new InternalServerError)
+        })
+        return player;
+    }
+
     const returnPlayer = (p) => {
         return {
             id: p._id.toString(),
@@ -18,6 +25,7 @@ const playerService = () => {
 
     return {
         getAllPlayers,
+        getPlayerById,
         returnPlayer
     };
 }
