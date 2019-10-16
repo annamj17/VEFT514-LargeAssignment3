@@ -1,28 +1,23 @@
-const  { Player, Connection } = require('../data/db');
-const { InternalServerError, NotFoundError } = require('../errors');
+const { Player } = require('../data/db.js');
 
 const playerService = () => {
-    
-    // Should return a collection of all players
-    const getAllPlayers = (error) => {
-        Player.find({}, function (err, player) {
-            if (error) { error(new InternalServerError(true)); }
-            return player;
-        });
+    const getAllPlayers = () => {
+        return Player.find({});
+    }
+
+    const returnPlayer = (player) => {
+        return {
+            id: player._id.toString(),
+            name: player.name,
+            playedGames: player.playedGames,
+        }
     };
 
-    // Should return a specific player by id
-    const getPlayer = (error, id) => {
-        Player.findById(id, function (err, player) {
-            if (error) { error(new NotFoundError(`Player with id ${id} not found in system`)); }
-            return player;
-        });
-    }
 
     return {
         getAllPlayers,
-        getPlayer
+        returnPlayer
     };
-};
+}
 
 module.exports = playerService();
