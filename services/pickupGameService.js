@@ -1,23 +1,35 @@
 const { PickupGame } = require('../data/db.js');
+const { InternalServerError } = require('../errors');
 
 const pickupGameService = () => {
     const getAllPickupGames = () => {
-        return PickupGame.find({});
-    }
+        const allPickupGames = PickupGame.find({}, function (error) {
+            if (error) { error(new InternalServerError); }
+        })
+        return allPickupGames;
+    };
 
-    const returnPickupGame = (pickupGame) => {
+    const getPickupGameById = (id) => {
+        const pickupGame = PickupGame.findById(id, function (error) {
+            if (error) { error(new InternalServerError); }
+        }) 
+        return pickupGame;
+    };
+
+    const returnPickupGame = (p) => {
         return {
-            id: pickupGame._id.toString(),
-            start: pickupGame.start,
-            end: pickupGame.end,
-            location: pickupGame.location,
-            registeredPlayedGames: pickupGame.registeredPlayedGames,
-            host: pickupGame.host
+            id: p._id.toString(),
+            start: p.start,
+            end: p.end,
+            location: p.location,
+            registeredPlayedGames: p.registeredPlayedGames,
+            host: p.host
         }
     }
 
     return {
         getAllPickupGames,
+        getPickupGameById,
         returnPickupGame
     };
 };
