@@ -40,11 +40,20 @@ class NotFoundError extends ApolloError {
     }
 }
 
+class InternalServerError extends ApolloError {
+    constructor(message = 'Internal server error occurred') {
+        super(null, null, message);
+        this.name = 'InternalServerError';
+        this.code = 500;
+    }
+}
+
 module.exports = {
     PickupGameExceedMaximumError,
     BasketballFieldClosedError,
     PickupGameOverlapError,
     PickupGameAlreadyPassedError,
     NotFoundError,
-    UserInputError
+    UserInputError,
+    InternalServerError
 };
