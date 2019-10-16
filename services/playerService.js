@@ -2,17 +2,19 @@ const { Player } = require('../data/db.js');
 
 const playerService = () => {
     const getAllPlayers = () => {
-        return Player.find({});
+        const allPlayers = Player.find({}, function (error) {
+            if (error) error(new InternalServerError)
+        })
+        return allPlayers;
     }
 
-    const returnPlayer = (player) => {
+    const returnPlayer = (p) => {
         return {
-            id: player._id.toString(),
-            name: player.name,
-            playedGames: player.playedGames,
+            id: p._id.toString(),
+            name: p.name,
+            playedGames: p.playedGames,
         }
     };
-
 
     return {
         getAllPlayers,
