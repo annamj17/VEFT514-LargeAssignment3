@@ -2,9 +2,9 @@ const basketballFieldService = require('../services/basketballFieldService');
 
 module.exports = {
     query: {
-        allBasketballFields: async (parent, args) => {
+        allBaketballFields: async (parent, args) => {
             const filedStatus = args.status;
-            const allBasketballFields = await basketballFieldService.getAllBasketballFields(filedStatus);
+            const allBasketballFields = await basketballFieldService.getAllBasketBallFields(filedStatus);
             return allBasketballFields;
         }
     }
