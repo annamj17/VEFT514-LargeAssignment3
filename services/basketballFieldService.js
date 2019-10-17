@@ -15,19 +15,25 @@ const basketballFieldService = () => {
                 console.log("HERE")
                 console.log(jsonObj);
                 res(jsonObj);
-
             });
         });
     };
 
     // Should return a specific basketball field by id
-    const getBasketballField = () => {
-
+    const getBasketballFieldById = (id) => {
+        const route = `${url}/${id}`;
+        return new Promise((res) => {
+            request(route, function(error, response, body) {
+                if (error) { error(new InternalServerError); }
+                let jsonObj = JSON.parse(body);
+                res(jsonObj);
+            })
+        })
     };
 
     return {
         getAllBasketBallFields,
-        getBasketballField
+        getBasketballFieldById
     };
 };
 module.exports = basketballFieldService();
