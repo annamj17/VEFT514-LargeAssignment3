@@ -3,7 +3,7 @@ const pickupGameService = require('../services/pickupGameService');
 
 module.exports = {
     Query: {
-        allBaketballFields: async (parent, args) => {
+        allBasketballFields: async (parent, args) => {
             const allBasketballFields = await basketballFieldService.getAllBasketBallFields(args.status);
             return allBasketballFields;
         },
@@ -13,6 +13,6 @@ module.exports = {
         }
     },
     Type: {
-        
+
     }
 }

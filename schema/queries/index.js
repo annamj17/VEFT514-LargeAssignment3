@@ -1,6 +1,6 @@
 module.exports = `
     type Query {
-        allBaketballFields(status: BasketballFieldStatus): [BasketballField!]!
+        allBasketballFields(status: BasketballFieldStatus): [BasketballField!]!
         allPickupGames: [PickupGame!]!
         allPlayers: [Player!]!
         basketballField(id: ID!): BasketballField!
