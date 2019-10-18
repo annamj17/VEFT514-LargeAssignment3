@@ -16,6 +16,12 @@ const playerService = () => {
         return player;
     }
 
+    const createPlayer = (player) => {
+        return Player.create({
+            name: player.name,
+        })
+    };
+
     const returnPlayer = (p) => {
         return {
             id: p._id.toString(),
@@ -27,6 +33,7 @@ const playerService = () => {
     return {
         getAllPlayers,
         getPlayerById,
+        createPlayer,
         returnPlayer
     };
 }

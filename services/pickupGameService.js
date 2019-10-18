@@ -22,7 +22,7 @@ const pickupGameService = () => {
             start: p.start,
             end: p.end,
             location: p.location,
-            registeredPlayedGames: p.registeredPlayedGames,
+            registeredPlayers: p.registeredPlayers,
             host: p.host
         }
     }

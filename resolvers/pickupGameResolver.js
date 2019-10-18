@@ -1,5 +1,7 @@
 const pickupGameService = require('../services/pickupGameService');
+const basketballFieldService = require('../services/basketballFieldService');
 const { NotFoundError } = require('../errors');
+const Schema = require('mongoose').Schema;
 
 module.exports = {
     Query: {
@@ -7,6 +9,8 @@ module.exports = {
             const pickupGames = await pickupGameService.getAllPickupGames();
             if (pickupGames === null) { throw new NotFoundError; }
             return pickupGames.map(pickupGame => {
+                console.log("PickupGames: ");
+                console.log(pickupGameService.returnPickupGame(pickupGame));
                 return pickupGameService.returnPickupGame(pickupGame);
             });
         },
@@ -19,4 +23,8 @@ module.exports = {
     Mutation: {
 
     },
+    Type: {
+        
+        }
+
 };

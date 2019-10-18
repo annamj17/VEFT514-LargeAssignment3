@@ -7,12 +7,12 @@ const basketballFieldResolver = require('./basketballFieldResolver');
 
 module.exports = {
     Query: {
-        ...basketballFieldResolver.query,
+        ...basketballFieldResolver.Query,
         ...playerResolver.Query,
         ...pickupGameResolver.Query
     },
     Mutation: {
-
+        ...playerResolver.Mutation,
     },
     Moment: new GraphQLScalarType({
         name: 'Moment',
@@ -20,7 +20,7 @@ module.exports = {
         parseLiteral: (value) => { return moment(value); },
         serialize: (value) => moment(new Date(value)).locale('is').format('llll')
     }),
-    ...basketballFieldResolver.types,
-    ...playerResolver.types,
-    ...pickupGameResolver.types
+    ...basketballFieldResolver.Type,
+    ...playerResolver.Type,
+    ...pickupGameResolver.Type
 };

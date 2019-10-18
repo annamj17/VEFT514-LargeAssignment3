@@ -7,7 +7,7 @@ const connection = mongoose.createConnection('mongodb+srv://Anna:Abc1234@cluster
 
 module.exports = {
     Player: connection.model('Player', playerSchema),
-    PickupGame: connection.model('PickupGame', pickupGameSchema),
+    PickupGame: connection.model('Games', pickupGameSchema),
     BasketballField: connection.model('BasketballField', basketballFieldSchema),
 };
 
