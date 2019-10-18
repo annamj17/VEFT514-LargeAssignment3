@@ -30,10 +30,10 @@ const basketballFieldService = () => {
             })
         })
     };
-
+ 
     return {
         getAllBasketBallFields,
-        getBasketballFieldById
+        getBasketballFieldById,
     };
 };
 module.exports = basketballFieldService();

@@ -1,4 +1,5 @@
 const playerService = require('../services/playerService');
+const pickupGameService = require('../services/pickupGameService');
 const { NotFoundError } = require('../errors');
 
 module.exports = {
@@ -7,6 +8,8 @@ module.exports = {
             const players = await playerService.getAllPlayers();
             if (players === null) { throw new NotFoundError; }
             return players.map(player => {
+                console.log("Players: ");
+                console.log(playerService.returnPlayer(player));
                 return playerService.returnPlayer(player);
             });
         },
@@ -17,6 +20,12 @@ module.exports = {
         },
     },
     Mutation: {
-
+        createPlayer: async (parent, args) => {
+            const newPlayer = await playerService.createPlayer(args.input);
+            return playerService.returnPlayer(newPlayer);
+        }
     },
+    Type: {
+
+    }
 };
